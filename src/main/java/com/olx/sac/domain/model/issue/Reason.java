@@ -1,5 +1,7 @@
 package com.olx.sac.domain.model.issue;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.NonNull;
 import lombok.Value;
 
 /**
@@ -7,5 +9,8 @@ import lombok.Value;
  */
 @Value
 public class Reason {
+
+    @NonNull
+    @JsonProperty("reason")
     private String content;
 }

@@ -10,15 +10,19 @@ import lombok.Value;
 @Value
 public class Issue {
 
+    @NonNull
     @JsonUnwrapped
-    private @NonNull Type type;
+    private Type type;
 
+    @NonNull
     @JsonUnwrapped
-    private @NonNull Reason reason;
+    private Reason reason;
 
+    @NonNull
     @JsonUnwrapped
-    private @NonNull State state;
+    private State state;
 
+    @NonNull
     @JsonUnwrapped
-    private @NonNull Description description;
+    private Description description;
 }
