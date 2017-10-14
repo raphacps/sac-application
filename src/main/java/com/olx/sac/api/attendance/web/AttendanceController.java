@@ -5,6 +5,7 @@ import com.olx.sac.api.attendance.web.facade.to.IssueTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class AttendanceController {
     private AttendanceServiceFacade attendanceServiceFacade;
 
     @PostMapping
-    public ResponseEntity createIssue(@RequestBody IssueTO issueTO) {
+    public ResponseEntity createIssue(@RequestBody @Validated IssueTO issueTO) {
         attendanceServiceFacade.register(issueTO);
         return status(CREATED).build();
     }
