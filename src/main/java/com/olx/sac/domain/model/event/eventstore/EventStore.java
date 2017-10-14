@@ -1,6 +1,8 @@
 package com.olx.sac.domain.model.event.eventstore;
 
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
@@ -20,6 +22,7 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public final class EventStore<T extends DomainEvent> {
 
     @Id
@@ -34,7 +37,7 @@ public final class EventStore<T extends DomainEvent> {
 
     @NotNull
     @Type(type = "jsonObject")
-    @Column(columnDefinition = "jsonb", name = "event")
+    @Column(columnDefinition = "jsonb", name = "event_body")
     private T jsonObject;
 
     @NotNull
@@ -44,9 +47,6 @@ public final class EventStore<T extends DomainEvent> {
     private Date createdAt;
 
     private String aggregate;
-
-    EventStore() {
-    }
 
     public EventStore(T jsonObject) {
         this.jsonObject = jsonObject;

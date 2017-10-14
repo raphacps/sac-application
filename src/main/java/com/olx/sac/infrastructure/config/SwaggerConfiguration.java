@@ -21,8 +21,8 @@ public class SwaggerConfiguration {
     }
 
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("OLX", "", "raphacps@gmail.com");
-        return new ApiInfo("SAC", "Registro de SAC", "v1", "API",
+        Contact contact = new Contact("Raphael Soares", "", "raphacps@gmail.com");
+        return new ApiInfo("SAC", "Record of Attendance", "v1", "API",
                 contact, "Olx", null);
     }
 }
