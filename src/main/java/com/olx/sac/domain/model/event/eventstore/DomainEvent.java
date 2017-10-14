@@ -1,9 +1,10 @@
 package com.olx.sac.domain.model.event.eventstore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.m4u.eventsourcing.infrastructure.json.JsonUtil;
+import com.olx.sac.infrastructure.json.JsonUtil;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by raphael on 18/11/16.
@@ -18,5 +19,7 @@ public interface DomainEvent<T> extends Serializable {
     Class<T> getAggregate();
 
     @JsonIgnore
-    AggregateId getAggregateId();
+    default AggregateId getAggregateId() {
+        return new AggregateId(UUID.randomUUID().toString());
+    }
 }
