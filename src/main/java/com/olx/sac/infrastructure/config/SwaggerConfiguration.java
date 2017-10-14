@@ -1,4 +1,4 @@
-package com.m4u.simpsons.homer.infrastructure.config;
+package com.olx.sac.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,13 +16,13 @@ public class SwaggerConfiguration {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.m4u.simpsons.homer.api"))
+        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.olx.sac.api"))
                 .paths(PathSelectors.any()).build().apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("M4U", "https://bitbucket.org/simpsons-m4u/homer.git", "raphael.soares@m4u.com.br");
-        return new ApiInfo("Homer", "Sistema que orquestra adesões", "v1", "API",
-                contact, "M4 - Produtos e Serviços", null);
+        Contact contact = new Contact("OLX", "", "raphacps@gmail.com");
+        return new ApiInfo("SAC", "Registro de SAC", "v1", "API",
+                contact, "Olx", null);
     }
 }
