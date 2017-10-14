@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: sac
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/sacdb
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:postgres}
+    poolName: poolDev
+    maximumPoolSize: 3
+    minimumIdle: 1
+    maxLifetime: 2000000
+    connectionTimeout: 30000
+    idleTimeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: update
+info:
+  project:
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}

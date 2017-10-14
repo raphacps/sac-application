@@ -1,0 +1,10 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:9.6-alpine
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=sacdb
+    container_name: postgres
