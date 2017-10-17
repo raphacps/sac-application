@@ -8,8 +8,8 @@
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>sac</name>
-	<description>Demo project for Spring Boot</description>
+	<name>sac-command</name>
+	<description>Microservico com funcao de executar o Command do CQRS</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
