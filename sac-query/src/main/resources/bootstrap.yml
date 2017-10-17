@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sac-command
+    name: sac-query
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:5432/sacdb
     username: ${DB_USER:postgres}
@@ -22,8 +22,9 @@ spring:
   cloud:
     stream:
       bindings:
-        issueCreatedOutput:
+        saveIssueInput:
           destination: sac-command.issueCreated
+          group: saveIssue
           content-type: application/json
 
 info:

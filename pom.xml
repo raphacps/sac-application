@@ -27,6 +27,7 @@
 
   <modules>
     <module>sac-command</module>
+    <module>sac-query</module>
   </modules>
 
   <dependencies>
