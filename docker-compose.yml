@@ -1,5 +1,19 @@
 version: '2'
 services:
+  eureka:
+    image: springcloud/eureka
+    container_name: eureka
+    hostname: eureka
+    network_mode: host
+    ports:
+      - "8761:8761"
+  rabbitmq:
+    image: rabbitmq:3.6.12-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
   postgres:
     image: postgres:9.6-alpine
     hostname: postgres
