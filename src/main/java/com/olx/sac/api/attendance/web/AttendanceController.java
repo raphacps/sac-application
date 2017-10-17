@@ -5,6 +5,8 @@ import com.olx.sac.api.attendance.web.facade.to.IssueTO;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +23,11 @@ import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequestMapping(value = "/issues")
-@AllArgsConstructor
 @Slf4j
 @Api(value = "/issues", description = "Record of attendance")
 public class AttendanceController {
 
+    @Autowired
     private AttendanceServiceFacade attendanceServiceFacade;
 
     @PostMapping

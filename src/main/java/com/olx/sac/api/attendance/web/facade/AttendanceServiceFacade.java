@@ -6,6 +6,7 @@ import com.olx.sac.application.attendance.AttendanceService;
 import com.olx.sac.domain.model.issue.Issue;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
-public final class AttendanceServiceFacade {
+public class AttendanceServiceFacade {
 
+    @Autowired
     private AttendanceService attendanceService;
 
     public void register(@NonNull IssueTO issueTO) {
