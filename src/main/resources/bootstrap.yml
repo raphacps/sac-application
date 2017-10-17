@@ -14,8 +14,22 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  jackson:
+      serialization.INDENT_OUTPUT: true
+      serialization.FAIL_ON_EMPTY_BEANS: false
+      default-property-inclusion: non_null
+
+  cloud:
+    stream:
+      bindings:
+        issueCreatedOutput:
+          destination: sac-command.issueCreated
+          content-type: application/json
+
 info:
   project:
     name: ${project.name}
     description: ${project.description}
     version: ${project.version}
+
+logging.level.com.netflix.discovery: INFO
