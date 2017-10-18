@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class AttendanceServiceFacade {
 
-    @Autowired
     private AttendanceService attendanceService;
 
     public void register(@NonNull IssueTO issueTO) {

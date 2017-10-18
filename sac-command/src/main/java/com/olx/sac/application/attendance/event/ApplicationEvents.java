@@ -3,6 +3,7 @@ package com.olx.sac.application.attendance.event;
 import com.olx.sac.domain.model.event.attendance.IssueCreatedEvent;
 import com.olx.sac.domain.model.event.eventstore.EventStore;
 import com.olx.sac.domain.model.event.eventstore.EventStoreRepository;
+import com.olx.sac.domain.model.issue.Issue;
 import com.olx.sac.infrastructure.messaging.amqp.EventsDestination;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

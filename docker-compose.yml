@@ -14,6 +14,8 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+    environment:
+      - TZ=America/Sao_Paulo
   postgres:
     image: postgres:9.6-alpine
     hostname: postgres
@@ -21,4 +23,5 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_DB=sacdb
+      - TZ=America/Sao_Paulo
     container_name: postgres

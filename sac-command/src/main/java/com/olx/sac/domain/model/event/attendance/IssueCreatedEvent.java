@@ -6,6 +6,8 @@ import com.olx.sac.domain.model.issue.Issue;
 import lombok.NonNull;
 import lombok.Value;
 
+import java.util.Date;
+
 /**
  * Created by raphael on 13/10/17.
  */
@@ -15,6 +17,13 @@ public class IssueCreatedEvent implements DomainEvent<Issue> {
     @NonNull
     @JsonUnwrapped
     private Issue issue;
+
+    private Date createdAt;
+
+    public IssueCreatedEvent(Issue issue) {
+        this.issue = issue;
+        this.createdAt = new Date();
+    }
 
     @Override
     public Class<Issue> getAggregate() {
