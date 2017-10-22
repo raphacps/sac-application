@@ -1,9 +1,7 @@
 package com.olx.sac.api.attendance.web;
 
-import com.olx.factory.IssueFactory;
+import com.olx.factory.IssueTOFactory;
 import com.olx.sac.api.attendance.web.facade.to.IssueTO;
-import com.olx.sac.domain.model.event.eventstore.EventStore;
-import com.olx.sac.domain.model.event.eventstore.EventStoreRepository;
 import com.olx.sac.infrastructure.messaging.amqp.EventsDestination;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static com.olx.sac.infrastructure.json.JsonUtil.toJson;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -52,7 +49,7 @@ public class AttendanceControllerIT {
         when(eventsDestination.issueCreated()).thenReturn(messageChannel);
         when(messageChannel.send(any(Message.class))).thenReturn(true);
         this.mvc.perform(post("/issues").accept(MediaType.APPLICATION_JSON)
-                .content(toJson(IssueFactory.create()))
+                .content(toJson(IssueTOFactory.create()))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isCreated());
@@ -61,7 +58,7 @@ public class AttendanceControllerIT {
 
     @Test
     public void shouldNotCreateIssueWithoutAnyAttribute() throws Exception {
-        IssueTO issueTOWithoutType = IssueFactory.create();
+        IssueTO issueTOWithoutType = IssueTOFactory.create();
         issueTOWithoutType.setType(null);
         this.mvc.perform(post("/issues").accept(MediaType.APPLICATION_JSON)
                 .content(toJson(issueTOWithoutType))
@@ -70,7 +67,7 @@ public class AttendanceControllerIT {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().json("{\"code\":\"BAD_REQUEST\",\"message\":\"type may not be empty\"}"));
 
-        IssueTO issueTOWithoutState = IssueFactory.create();
+        IssueTO issueTOWithoutState = IssueTOFactory.create();
         issueTOWithoutState.setState(null);
         this.mvc.perform(post("/issues").accept(MediaType.APPLICATION_JSON)
                 .content(toJson(issueTOWithoutState))
@@ -79,7 +76,7 @@ public class AttendanceControllerIT {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().json("{\"code\":\"BAD_REQUEST\",\"message\":\"state may not be empty\"}"));
 
-        IssueTO issueTOWithoutReason = IssueFactory.create();
+        IssueTO issueTOWithoutReason = IssueTOFactory.create();
         issueTOWithoutReason.setReason(null);
         this.mvc.perform(post("/issues").accept(MediaType.APPLICATION_JSON)
                 .content(toJson(issueTOWithoutReason))
@@ -88,7 +85,7 @@ public class AttendanceControllerIT {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().json("{\"code\":\"BAD_REQUEST\",\"message\":\"reason may not be empty\"}"));
 
-        IssueTO issueTOWithoutDescription = IssueFactory.create();
+        IssueTO issueTOWithoutDescription = IssueTOFactory.create();
         issueTOWithoutDescription.setDescription(null);
         this.mvc.perform(post("/issues").accept(MediaType.APPLICATION_JSON)
                 .content(toJson(issueTOWithoutDescription))

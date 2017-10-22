@@ -5,9 +5,9 @@ import com.olx.sac.api.attendance.web.facade.to.IssueTO;
 /**
  * Created by raphael on 16/10/17.
  */
-public final class IssueFactory {
+public final class IssueTOFactory {
 
-    private IssueFactory(){}
+    private IssueTOFactory(){}
     public static IssueTO create(){
         IssueTO issueTO = new IssueTO();
         issueTO.setType("TELEFONE");

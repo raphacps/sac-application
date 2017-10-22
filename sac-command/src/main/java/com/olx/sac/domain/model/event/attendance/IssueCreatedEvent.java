@@ -14,13 +14,12 @@ import java.util.Date;
 @Value
 public class IssueCreatedEvent implements DomainEvent<Issue> {
 
-    @NonNull
     @JsonUnwrapped
     private Issue issue;
 
     private Date createdAt;
 
-    public IssueCreatedEvent(Issue issue) {
+    public IssueCreatedEvent(@NonNull Issue issue) {
         this.issue = issue;
         this.createdAt = new Date();
     }
