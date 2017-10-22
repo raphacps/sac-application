@@ -34,3 +34,5 @@ info:
     version: ${project.version}
 
 logging.level.com.netflix.discovery: INFO
+
+server.port: ${PORT:0}

@@ -11,6 +11,15 @@
 	<name>sac-query</name>
 	<description>Microservico com funcao de executar o Query do CQRS</description>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
 	<parent>
 		<groupId>com.olx</groupId>
 		<artifactId>sac</artifactId>
