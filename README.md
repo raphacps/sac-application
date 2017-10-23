@@ -1,12 +1,12 @@
-#SAC - Application
+# SAC - Application
 
-##O que está contido no projeto?
+## O que está contido no projeto?
     Postgres - Banco de dados
     RabbitMQ - Broker de mensageria
     Netflix OSS com Spring Cloud
     Zuulproxy - client load balancer
   
-##Como foi implementado
+## Como foi implementado
   
     Foi implementado utilizando arquitetura de microserviços com CQRS 
     
