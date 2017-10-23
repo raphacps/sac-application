@@ -33,7 +33,7 @@ Premissas:
           
 **Swagger**    
     
-    As aplicações backend contêm swagger em http://<host>:<porta>/swagger-ui.html.
+    As aplicações backend contêm swagger em http://host:port/swagger-ui.html.
     Ou pelo zuulproxy em http://localhost:8080/sac-command/swagger-ui.html
     e http://localhost:8080/sac-query/swagger-ui.html
 
