@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: sac-query
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/sacdb
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:postgres}
+    poolName: poolDev
+    maximumPoolSize: 3
+    minimumIdle: 1
+    maxLifetime: 2000000
+    connectionTimeout: 30000
+    idleTimeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: update
+  jackson:
+      serialization.INDENT_OUTPUT: true
+      serialization.FAIL_ON_EMPTY_BEANS: false
+      default-property-inclusion: non_null
+
+  cloud:
+    stream:
+      bindings:
+        saveIssueInput:
+          destination: sac-command.issueCreated
+          group: saveIssue
+          content-type: application/json
+
+info:
+  project:
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+
+logging.level.com.netflix.discovery: INFO
+
+server.port: ${PORT:0}

@@ -1,5 +1,27 @@
 version: '2'
 services:
+  eureka:
+   image: raphacps/eureka
+   container_name: eureka
+   hostname: eureka   
+   ports:
+     - "8761:8761"
+  edge-server:
+    image: raphacps/edge-server
+    hostname: edge-server
+    network_mode: host
+    container_name: edge-server
+    depends_on:
+      - eureka
+  rabbitmq:
+    image: rabbitmq:3.6.12-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - TZ=America/Sao_Paulo
   postgres:
     image: postgres:9.6-alpine
     hostname: postgres
@@ -7,4 +29,21 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_DB=sacdb
+      - TZ=America/Sao_Paulo
     container_name: postgres
+  sac-command:
+    image: raphacps/sac-command:v1.0.0
+    network_mode: host
+  sac-query:
+    image: raphacps/sac-query:v1.0.0
+    network_mode: host
+  web:
+    image: raphacps/sac-frontend
+    volumes:
+      - ./nginx-logs:/var/log/nginx
+    network_mode: host
+    container_name: frontend
+    depends_on:
+      - sac-command
+      - sac-query
+
