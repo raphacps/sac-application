@@ -31,7 +31,12 @@ Premissas:
     Obs.: para rodar mvn clean install, subir antes a infraestrutura (docker-compose up -d) 
           para testes de integração.
           
+**Swagger**    
     
+    As aplicações backend contêm swagger em http://<host>:<porta>/swagger-ui.html.
+    Ou pelo zuulproxy em http://localhost:8080/sac-command/swagger-ui.html
+    e http://localhost:8080/sac-query/swagger-ui.html
+
 **Acesso às aplicações**
 
     Eureka: localhost:8761
