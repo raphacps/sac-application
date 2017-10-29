@@ -17,11 +17,18 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 @EnableBinding(EventsDestination.class)
 public class AttendanceEventQueue {
 
+
+
     private AttendanceService attendanceService;
 
     @StreamListener(EventsDestination.SAVE_ISSUE_INPUT)
     public void saveIssue(Issue issue) {
         log.info("recebendo issue via queue {}", issue);
         attendanceService.save(issue);
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println((int)9/2);
     }
 }
