@@ -26,9 +26,4 @@ public class AttendanceEventQueue {
         log.info("recebendo issue via queue {}", issue);
         attendanceService.save(issue);
     }
-
-
-    public static void main(String[] args) {
-        System.out.println((int)9/2);
-    }
 }
